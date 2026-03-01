@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use server';
 
 import { IJob } from "@/interface/jobs.type";
@@ -29,4 +30,30 @@ export const createJob = async (data: Partial<IJob>) => {
     }
 
     return result;
+};
+
+export const getAllJobs = async (queryString?: string) => {
+    try {
+        const res = await serverFetch.get(`/jobs${queryString ? `?${queryString}` : ""}`, {
+            next: {
+                tags: ["jobs"]
+            }
+        });
+
+        if (!res.ok) {
+            const errorData = await res.json().catch(() => ({}));
+            throw new Error(errorData.message || "Failed to fetch jobs");
+        }
+
+        const result = await res.json();
+
+        return result;
+
+    } catch (error: any) {
+        console.log(error);
+        return {
+            success: false,
+            message: `${process.env.NODE_ENV === 'development' ? error?.message ? error?.message : error?.response?.data?.message : 'Something went wrong in jobs fetching.'}`
+        };
+    }
 };

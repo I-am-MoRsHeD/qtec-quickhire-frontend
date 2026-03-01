@@ -17,7 +17,7 @@ const DashboardLayout = ({ children }: IProps) => {
             <SidebarInset>
                 <SiteHeader />
                 <div className="flex flex-1 flex-col">
-                    <div className="m-4 bg-muted rounded-lg p-4 min-h-dvh">
+                    <div className="m-4 min-h-dvh">
                         {children}
                     </div>
                 </div>

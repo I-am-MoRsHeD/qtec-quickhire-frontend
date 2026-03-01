@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { MapPin, ArrowRight } from "lucide-react";
+import { Button } from '../ui/button';
 
 interface JobCardProps {
     job: {
@@ -21,6 +22,7 @@ interface JobCardProps {
 const JobCard = ({ job }: JobCardProps) => {
     const pathname = usePathname();
     const isJobsPage = pathname === "/jobs";
+    const isAdminJobPage = pathname === '/admin/jobs';
 
     if (!job) return null;
 
@@ -90,6 +92,17 @@ const JobCard = ({ job }: JobCardProps) => {
                         Show details
                         <ArrowRight size={18} />
                     </Link>
+                </div>
+            )}
+
+            {/* only show when /admin/jobs is the pathname */}
+            {isAdminJobPage && job.id && (
+                <div className="mt-6 pt-6 border-t border-border">
+                    <Button
+                        className="flex items-center justify-center gap-2 w-full bg-primary text-background py-3 font-epilogue font-bold hover:bg-opacity-90 transition-all"
+                    >
+                        Delete Job
+                    </Button>
                 </div>
             )}
         </div>
