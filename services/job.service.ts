@@ -84,4 +84,31 @@ export const getJobDetails = async (id?: string) => {
     }
 };
 
-export const deleteJobs = async (id: string) => { };
+export const deleteJobs = async (id: number) => {
+    try {
+        const res = await serverFetch.delete(`/jobs/${id}`, {
+            credentials: "include",
+        });
+
+        if (!res.ok) {
+            const errorData = await res.json().catch(() => ({}));
+            throw new Error(errorData.message || "Failed to delete job");
+        }
+
+        const result = await res.json();
+
+        if (result.success) {
+            revalidatePath("/");
+            revalidatePath("/jobs");
+            revalidatePath("/admin/jobs");
+            revalidateTag("jobs", {});
+        }
+
+        return result;
+    } catch (error: any) {
+        return {
+            success: false,
+            message: error?.message || "Something went wrong while deleting.",
+        };
+    }
+};

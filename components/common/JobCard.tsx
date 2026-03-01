@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { MapPin, ArrowRight } from "lucide-react";
 import { Button } from '../ui/button';
+import { DeleteJobDialog } from '../Dashboard/DeleteJobDialog';
 
 interface JobCardProps {
     job: {
@@ -97,12 +98,8 @@ const JobCard = ({ job }: JobCardProps) => {
 
             {/* only show when /admin/jobs is the pathname */}
             {isAdminJobPage && job.id && (
-                <div className="mt-6 pt-6 border-t border-border">
-                    <Button
-                        className="flex items-center justify-center gap-2 w-full bg-primary text-background py-3 font-epilogue font-bold hover:bg-opacity-90 transition-all"
-                    >
-                        Delete Job
-                    </Button>
+                <div className="mt-6 pt-6 border-t border-border w-full">
+                    <DeleteJobDialog jobId={job.id as number} jobTitle={job.title as string} />
                 </div>
             )}
         </div>
