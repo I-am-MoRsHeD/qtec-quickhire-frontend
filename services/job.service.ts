@@ -57,3 +57,31 @@ export const getAllJobs = async (queryString?: string) => {
         };
     }
 };
+
+export const getJobDetails = async (id?: string) => {
+    try {
+        const res = await serverFetch.get(`/jobs/${id}`, {
+            next: {
+                tags: ["jobs"]
+            }
+        });
+
+        if (!res.ok) {
+            const errorData = await res.json().catch(() => ({}));
+            throw new Error(errorData.message || "Failed to fetch job details");
+        }
+
+        const result = await res.json();
+
+        return result;
+
+    } catch (error: any) {
+        console.log(error);
+        return {
+            success: false,
+            message: `${process.env.NODE_ENV === 'development' ? error?.message ? error?.message : error?.response?.data?.message : 'Something went wrong in job details fetching.'}`
+        };
+    }
+};
+
+export const deleteJobs = async (id: string) => { };
