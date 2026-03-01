@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Link from "next/link";
 import { X } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 
@@ -51,7 +50,7 @@ const Navbar = () => {
                             Login
                         </Link>
                         <div className="w-px h-12 bg-background/90" />
-                        <Link href="/signup" className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-6 py-3 transition-all">
+                        <Link href="/login" className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-6 py-3 transition-all">
                             Sign Up
                         </Link>
                     </div>
@@ -83,8 +82,13 @@ const Navbar = () => {
                         </Link>
                     ))}
                     <div className="flex flex-col gap-3 pt-4">
-                        <Button variant="outline" className="w-full border-primary text-primary">Login</Button>
-                        <Button className="w-full bg-primary text-white">Sign Up</Button>
+                        <Link href="/login" className="text-primary font-bold hover:opacity-80 px-4">
+                            Login
+                        </Link>
+                        <div className="w-px h-12 bg-background/90" />
+                        <Link href="/login" className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-6 py-3 transition-all">
+                            Sign Up
+                        </Link>
                     </div>
                 </div>
             )}

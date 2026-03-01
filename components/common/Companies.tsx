@@ -1,4 +1,5 @@
-import { COMPANIES } from "@/consts/companies.consts";
+
+import { companiesHelped } from "@/consts/companies.consts";
 import Image from "next/image";
 
 export const Companies = () => {
@@ -8,7 +9,7 @@ export const Companies = () => {
                 Companies we helped grow
             </p>
             <div className="flex flex-wrap justify-between items-center gap-8 lg:gap-4">
-                {COMPANIES.map((company) => (
+                {companiesHelped.map((company) => (
                     <div
                         key={company.name}
                         className="grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300"

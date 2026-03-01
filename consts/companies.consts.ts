@@ -1,5 +1,5 @@
 
-export const COMPANIES = [
+export const companiesHelped = [
     { name: "Vodafone", src: "/logos/vodafone.svg" },
     { name: "Intel", src: "/logos/intel.svg" },
     { name: "Tesla", src: "/logos/tesla.svg" },

@@ -54,7 +54,7 @@ export default function LoginForm() {
 
                 toast.success("Login successful!", { id: toastId });
 
-                router.push('/admin/dashboard');
+                router.push('/admin/jobs');
             } else {
                 toast.error(result?.message || "Login failed", { id: toastId });
             }
