@@ -3,15 +3,16 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper/modules';
 import AllFilters from '@/components/common/Filtering/AllFilters';
 import { filterOptions } from '@/consts/filters.consts';
-import { JOBS } from '@/consts/jobs.consts';
 import JobCard from '@/components/common/JobCard';
 import { IJob } from '@/interface/jobs.type';
-import { Metadata } from 'next';
+import { motion } from 'framer-motion';
+import PaginationComponent from '../common/Filtering/PaginationComponent';
+import { TMeta } from '@/interface';
 
 interface IProps {
     jobsData: {
         data: IJob[];
-        meta: Metadata
+        meta: TMeta
     }
 }
 
@@ -29,7 +30,7 @@ const AllJobs = ({ jobsData }: IProps) => {
                         pagination={{ clickable: true }}
                         className="pb-12"
                     >
-                        {JOBS.map((job) => (
+                        {jobsData?.data?.map((job) => (
                             <SwiperSlide key={job.id}>
                                 <JobCard job={job} />
                             </SwiperSlide>
@@ -48,6 +49,19 @@ const AllJobs = ({ jobsData }: IProps) => {
                         <h1 className='text-primary italic font-semibold font-clash'>No Jobs found</h1>
                     </div>
                 }
+
+                {/* pagination */}
+                {!!jobsData?.meta?.totalPage && (
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="px-4 md:px-6"
+                    >
+                        <PaginationComponent
+                            totalPages={jobsData?.meta?.totalPage as number}
+                        />
+                    </motion.div>
+                )}
             </div>
         </div>
     );
