@@ -5,8 +5,10 @@ import Link from "next/link";
 import { X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
+    const pathname = usePathname();
     const [isOpen, setIsOpen] = useState(false);
 
     const navLinks = [
@@ -20,23 +22,26 @@ const Navbar = () => {
                 <div className="flex justify-between items-center h-24">
                     <div className="flex flex-row items-center gap-12">
                         {/* Logo */}
-                        <div className="flex items-center gap-2">
+                        <Link href="/" className="flex items-center gap-2">
                             <div className="relative w-8 h-8">
                                 <Image src="/logo.png" fill alt="Logo" />
                             </div>
                             <span className="text-2xl font-extrabold text-foreground font-red-hat tracking-tight">QuickHire</span>
-                        </div>
+                        </Link>
                         {/* Desktop Navigation */}
                         <div className="hidden md:flex items-center space-x-8">
-                            {navLinks.map((link) => (
-                                <Link
-                                    key={link.name}
-                                    href={link.href}
-                                    className="text-[#515B6F] hover:text-primary transition-colors font-medium font-epilogue"
-                                >
-                                    {link.name}
-                                </Link>
-                            ))}
+                            {navLinks.map((link) => {
+                                const isActive = link.href === pathname;
+                                return (
+                                    <Link
+                                        key={link.name}
+                                        href={link.href}
+                                        className={`${isActive ? "text-primary border-b-2 border-primary pb-1" : "text-foreground/60"} hover:text-primary transition-colors font-medium font-epilogue`}
+                                    >
+                                        {link.name}
+                                    </Link>
+                                )
+                            })}
                         </div>
                     </div>
 
