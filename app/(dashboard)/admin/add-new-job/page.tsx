@@ -1,9 +1,10 @@
-import React from 'react';
+import AddNewJobForm from '@/components/Dashboard/AddNewJobForm';
+
 
 const AddNewJobPage = () => {
     return (
         <div>
-
+            <AddNewJobForm />
         </div>
     );
 };

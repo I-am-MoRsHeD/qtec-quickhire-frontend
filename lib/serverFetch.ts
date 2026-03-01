@@ -16,7 +16,7 @@ async function serverFetchHelper(
     credentials: "include",
     headers: {
       ...headers,
-      Authorization: accessToken ? `Bearer ${accessToken}` : "",
+      Cookie: accessToken ? `accessToken=${accessToken}` : "",
     },
     ...rest,
   });
