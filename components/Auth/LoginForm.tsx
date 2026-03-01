@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { setCookie } from "@/lib/cookies";
+import { loginAdmin } from "@/services/auth.service";
 import { loginValidation } from "@/validations/auth.validation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Eye, EyeOff, Lock, Mail, Send } from "lucide-react";
@@ -38,17 +39,9 @@ export default function LoginForm() {
         const toastId = toast.loading("Logging in...");
 
         try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/login`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(data),
-            });
+            const result = await loginAdmin(data);
 
-            const result = await response.json();
-
-            if (response.ok && result?.success) {
+            if (result?.success) {
                 setCookie("accessToken", result.data.accessToken, 7);
                 setCookie("refreshToken", result.data.refreshToken, 365);
 

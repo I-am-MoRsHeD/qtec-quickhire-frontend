@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Epilogue, Red_Hat_Display } from 'next/font/google';
 import localFont from "next/font/local";
 import "./globals.css";
+import { Toaster } from "sonner";
 
 
 const clashDisplay = localFont({
@@ -40,6 +41,7 @@ export default function RootLayout({
         className={`${clashDisplay.variable} ${epilogue.variable} ${red_hat_display.variable} antialiased`}
       >
         {children}
+        <Toaster richColors position="top-center" />
       </body>
     </html>
   );
