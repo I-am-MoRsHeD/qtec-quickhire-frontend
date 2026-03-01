@@ -37,7 +37,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${clashDisplay.variable} ${epilogue.variable} ${red_hat_display.variable} antialiased max-w-298 mx-auto`}
+        className={`${clashDisplay.variable} ${epilogue.variable} ${red_hat_display.variable} antialiased`}
       >
         {children}
       </body>
