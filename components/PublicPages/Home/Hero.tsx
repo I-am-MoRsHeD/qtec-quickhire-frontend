@@ -3,7 +3,7 @@ import { Search, MapPin } from "lucide-react";
 
 const Hero = () => {
     return (
-        <section className="relative w-full min-h-187.5 bg-[#F8F8FD] overflow-hidden pt-32 pb-0">
+        <section className="relative w-full min-h-187.5 bg-primary/5 overflow-hidden pt-32 pb-0">
 
             <div className="absolute inset-0 z-0 pointer-events-none">
                 <svg width="100%" height="100%" viewBox="0 0 1440 800" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -24,13 +24,13 @@ const Hero = () => {
             </div>
 
             <div
-                className="absolute bottom-0 right-0 w-[45%] h-[35%] bg-white z-20 hidden lg:block"
+                className="absolute bottom-0 right-0 w-[45%] h-[35%] bg-background z-20 hidden lg:block"
                 style={{ clipPath: 'polygon(100% 0, 100% 100%, 0% 100%)' }}
             />
 
             <div className="max-w-310 mx-auto px-4 lg:px-0 relative z-30">
                 <div className="lg:w-3/5 pt-10 pb-20">
-                    <h1 className="font-clash text-[48px] md:text-[72px] font-bold leading-[1.05] text-[#252733] tracking-tight">
+                    <h1 className="font-clash text-[48px] md:text-[72px] font-bold leading-[1.05] text-foreground tracking-tight">
                         Discover <br /> more than <br />
                         <span className="text-chart-3 relative inline-block">
                             5000+ Jobs
@@ -42,11 +42,11 @@ const Hero = () => {
                         </span>
                     </h1>
 
-                    <p className="font-epilogue text-[#515B6F] text-[18px] md:text-[20px] mt-12 max-w-125 leading-relaxed">
+                    <p className="font-epilogue text-muted-foreground/80 text-[18px] md:text-[20px] mt-12 max-w-125 leading-relaxed">
                         Great platform for the job seeker that searching for new career heights and passionate about startups.
                     </p>
 
-                    <div className="mt-10 bg-white p-4 shadow-[0px_24px_48px_rgba(0,0,0,0.04)] flex flex-col md:flex-row items-center gap-4 border border-[#D6DDEB] relative lg:-mr-20 z-30">
+                    <div className="mt-10 bg-background p-4 shadow-[0px_24px_48px_rgba(0,0,0,0.04)] flex flex-col md:flex-row items-center gap-4 border border-[#D6DDEB] relative lg:-mr-20 z-30">
                         <div className="flex items-center gap-3 flex-1 w-full md:border-r border-[#D6DDEB] px-2">
                             <Search className="text-[#252733]" size={24} />
                             <input
@@ -66,8 +66,8 @@ const Hero = () => {
                         </button>
                     </div>
 
-                    <p className="mt-6 text-[#515B6F] font-epilogue text-sm">
-                        <span className="opacity-50">Popular :</span> UI Designer, UX Researcher, Android, Admin
+                    <p className="mt-6 text-foreground/70 font-epilogue text-sm">
+                        <span className="">Popular :</span> UI Designer, UX Researcher, Android, Admin
                     </p>
                 </div>
             </div>

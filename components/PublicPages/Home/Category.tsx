@@ -5,9 +5,9 @@ import ShowJobsButton from "@/components/common/ShowJobsButton";
 
 export const Category = () => {
     return (
-        <section className="max-w-310 mx-auto px-4 py-20">
+        <section className="max-w-310 mx-auto px-4 py-8 lg:py-20">
             <div className="flex justify-between items-end mb-12">
-                <h2 className="font-clash text-4xl md:text-5xl font-bold text-foreground">
+                <h2 className="font-clash text-3xl md:text-5xl font-bold text-foreground">
                     Explore by <span className="text-chart-3">category</span>
                 </h2>
                 <div className='hidden md:flex'>

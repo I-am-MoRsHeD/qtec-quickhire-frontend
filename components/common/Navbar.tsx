@@ -16,7 +16,7 @@ const Navbar = () => {
 
     return (
         <nav className="absolute top-0 left-0 w-full z-50 bg-transparent">
-            <div className=" max-w-298 mx-auto px-4 lg:px-0">
+            <div className="max-w-310 mx-auto px-4 lg:px-0">
                 <div className="flex justify-between items-center h-24">
                     <div className="flex flex-row items-center gap-12">
                         {/* Logo */}
@@ -24,7 +24,7 @@ const Navbar = () => {
                             <div className="relative w-8 h-8">
                                 <Image src="/logo.png" fill alt="Logo" />
                             </div>
-                            <span className="text-2xl font-extrabold text-[#252733] font-red-hat tracking-tight">QuickHire</span>
+                            <span className="text-2xl font-extrabold text-foreground font-red-hat tracking-tight">QuickHire</span>
                         </div>
                         {/* Desktop Navigation */}
                         <div className="hidden md:flex items-center space-x-8">

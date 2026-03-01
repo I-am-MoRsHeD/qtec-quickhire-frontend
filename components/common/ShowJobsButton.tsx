@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 const ShowJobsButton = () => {
     return (
-        <Link href="/jobs" className="text-primary font-bold font-epilogue flex items-center gap-2 group my-5">
+        <Link href="/jobs" className="text-primary font-bold font-epilogue flex items-center gap-2 group my-5 md:my-0">
             Show all jobs <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
         </Link>
     );
