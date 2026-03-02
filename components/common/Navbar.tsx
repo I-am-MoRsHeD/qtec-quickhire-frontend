@@ -4,13 +4,14 @@ import { useState } from "react";
 import Link from "next/link";
 import { X } from "lucide-react";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { IUser } from "@/interface/auth.type";
 import { Button } from "../ui/button";
 import { removeCookie } from "@/lib/cookies";
 import { toast } from "sonner";
 
 const Navbar = ({ adminInfo }: { adminInfo: Partial<IUser> }) => {
+    const router = useRouter();
     const pathname = usePathname();
     const [isOpen, setIsOpen] = useState(false);
 
@@ -22,6 +23,7 @@ const Navbar = ({ adminInfo }: { adminInfo: Partial<IUser> }) => {
         removeCookie("accessToken");
         removeCookie("refreshToken");
         toast.success("Admin logged out successfully!");
+        router.refresh();
     };
 
     return (
