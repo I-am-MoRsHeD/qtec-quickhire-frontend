@@ -26,7 +26,7 @@ The client-side application for QuickHire, a modern job board platform built wit
 1.  **Clone the repository**:
     ```bash
     git clone [https://github.com/I-am-MoRsHeD/qtec-quickhire-frontend.git](https://github.com/I-am-MoRsHeD/qtec-quickhire-frontend.git)
-    cd quickhire/frontend
+    cd qtec-quickhire-frontend
     ```
 
 2.  **Install dependencies**:
