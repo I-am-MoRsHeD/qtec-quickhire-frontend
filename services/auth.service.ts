@@ -35,7 +35,6 @@ export const getAdminInfo = async () => {
         return result?.data;
 
     } catch (error: any) {
-        console.log(error);
         return {
             success: false,
             message: `${process.env.NODE_ENV === 'development' ? error?.message ? error?.message : error?.response?.data?.message : 'Something went wrong in admin info fetching.'}`
