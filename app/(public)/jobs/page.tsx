@@ -12,7 +12,7 @@ const FindJobsPage = async ({ searchParams }: IProps) => {
     const allJobs = await getAllJobs(queryString);
 
     return (
-        <div className='max-w-310 mx-auto px-4 py-8 lg:py-28'>
+        <div className='max-w-310 mx-auto px-4 py-28'>
             <FindJobs jobsData={allJobs} />
         </div>
     );

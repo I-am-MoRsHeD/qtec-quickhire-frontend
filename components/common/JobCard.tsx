@@ -97,7 +97,7 @@ const JobCard = ({ job }: JobCardProps) => {
 
             {/* only show when /admin/jobs is the pathname */}
             {isAdminJobPage && job.id && (
-                <div className="mt-6 pt-6 border-t border-border w-full">
+                <div className="mt-6 pt-6 border-t border-border w-full flex items-center justify-center">
                     <DeleteJobDialog jobId={job.id as number} jobTitle={job.title as string} />
                 </div>
             )}
