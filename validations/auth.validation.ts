@@ -3,15 +3,11 @@ import { z } from "zod";
 
 export const loginValidation = z.object({
   email: z
-    .string({
-      error: "Email is required",
-    })
+    .string()
     .min(1, "Email is required")
     .email({ message: "Invalid email address" }),
 
   password: z
-    .string({
-      error: "Password is required",
-    })
+    .string()
     .min(1, "Password is required"),
 });

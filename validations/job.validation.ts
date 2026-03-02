@@ -3,7 +3,7 @@ import { z } from "zod";
 
 export const createJobValidation = z.object({
     title: z
-        .string({ error: "Job title is required" })
+        .string()
         .trim()
         .min(3, "Title must be at least 3 characters long")
         .max(100, "Title cannot exceed 100 characters"),
@@ -14,7 +14,7 @@ export const createJobValidation = z.object({
         }),
 
     location: z
-        .string({ error: "Location is required" })
+        .string()
         .trim()
         .min(2, "Location must be at least 2 characters long"),
 
@@ -24,7 +24,7 @@ export const createJobValidation = z.object({
         }),
 
     description: z
-        .string({ error: "Description is required" })
+        .string()
         .trim()
         .min(10, "Description should be at least 10 characters to be helpful")
         .max(5000, "Description is too long (max 5000 characters)"),
