@@ -4,9 +4,14 @@ import { useState } from "react";
 import Link from "next/link";
 import { X } from "lucide-react";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { IUser } from "@/interface/auth.type";
+import { Button } from "../ui/button";
+import { removeCookie } from "@/lib/cookies";
+import { toast } from "sonner";
 
-const Navbar = () => {
+const Navbar = ({ adminInfo }: { adminInfo: Partial<IUser> }) => {
+    const router = useRouter();
     const pathname = usePathname();
     const [isOpen, setIsOpen] = useState(false);
 
@@ -14,6 +19,12 @@ const Navbar = () => {
         { name: "Find Jobs", href: "/jobs" },
         { name: "Browse Companies", href: "/companies" },
     ];
+    const handleLogout = () => {
+        removeCookie("accessToken");
+        removeCookie("refreshToken");
+        toast.success("Logged out successfully!")
+        router.refresh();
+    };
 
     return (
         <nav className="absolute top-0 left-0 w-full z-50 bg-transparent">
@@ -45,7 +56,30 @@ const Navbar = () => {
                     </div>
 
                     {/* Desktop Buttons */}
-                    <div className="hidden md:flex items-center space-x-4 font-epilogue">
+                    {
+                        adminInfo?.role === 'ADMIN' ? (
+                            <div className="hidden md:flex items-center space-x-4 font-epilogue">
+                                <Link href="/admin/jobs" className="text-primary font-bold hover:opacity-80 px-4">
+                                    Dashboard
+                                </Link>
+                                <div className="w-px h-12 bg-background/90" />
+                                <Button onClick={handleLogout} className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-6 py-3 transition-all">
+                                    Logout
+                                </Button>
+                            </div>
+                        ) : (
+                            <div className="hidden md:flex items-center space-x-4 font-epilogue">
+                                <Link href="/login" className="text-primary font-bold hover:opacity-80 px-4">
+                                    Login
+                                </Link>
+                                <div className="w-px h-12 bg-background/90" />
+                                <Link href="/login" className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-6 py-3 transition-all">
+                                    Sign Up
+                                </Link>
+                            </div>
+                        )
+                    }
+                    {/* <div className="hidden md:flex items-center space-x-4 font-epilogue">
                         <Link href="/login" className="text-primary font-bold hover:opacity-80 px-4">
                             Login
                         </Link>
@@ -53,7 +87,7 @@ const Navbar = () => {
                         <Link href="/login" className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-6 py-3 transition-all">
                             Sign Up
                         </Link>
-                    </div>
+                    </div> */}
 
                     {/* Mobile Menu Button */}
                     <div className="md:hidden flex items-center">
@@ -81,15 +115,29 @@ const Navbar = () => {
                             {link.name}
                         </Link>
                     ))}
-                    <div className="flex flex-col gap-3 pt-4">
-                        <Link href="/login" className="text-primary font-bold hover:opacity-80 px-4">
-                            Login
-                        </Link>
-                        <div className="w-px h-12 bg-background/90" />
-                        <Link href="/login" className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-6 py-3 transition-all">
-                            Sign Up
-                        </Link>
-                    </div>
+                    {
+                        adminInfo?.role === 'ADMIN' ? (
+                            <div className="flex flex-col gap-3 pt-4">
+                                <Link href="/login" className="text-primary font-bold hover:opacity-80 px-4">
+                                    Dashboard
+                                </Link>
+                                <div className="w-px h-12 bg-background/90" />
+                                <Link href="/login" className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-6 py-3 transition-all">
+                                    Logout
+                                </Link>
+                            </div>
+                        ) : (
+                            <div className="flex flex-col gap-3 pt-4">
+                                <Link href="/login" className="text-primary font-bold hover:opacity-80 px-4">
+                                    Login
+                                </Link>
+                                <div className="w-px h-12 bg-background/90" />
+                                <Link href="/login" className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-6 py-3 transition-all">
+                                    Sign Up
+                                </Link>
+                            </div>
+                        )
+                    }
                 </div>
             )}
         </nav>
