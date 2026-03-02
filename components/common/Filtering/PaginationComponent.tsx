@@ -77,7 +77,7 @@ export default function PaginationComponent({
         className="text-muted-foreground flex-1 text-sm whitespace-nowrap text-center lg:text-left"
         aria-live="polite"
       >
-        Page <span className="text-[#DC3173] font-semibold">{currentPage}</span>{" "}
+        Page <span className="text-primary font-semibold">{currentPage}</span>{" "}
         of <span className="text-foreground">{totalPages}</span>
       </p>
       <div className="grow my-4 lg:my-0">
@@ -105,8 +105,8 @@ export default function PaginationComponent({
                   onClick={() => handleOnClickPage(page)}
                   isActive={page === currentPage}
                   className={cn(
-                    "hover:bg-[#DC3173]/90 hover:text-white cursor-pointer",
-                    page === currentPage && "bg-[#DC3173] text-white"
+                    "hover:bg-primary/90 hover:text-white cursor-pointer",
+                    page === currentPage && "bg-primary text-white"
                   )}
                 >
                   {page}
@@ -141,7 +141,7 @@ export default function PaginationComponent({
         >
           <SelectTrigger
             id="results-per-page"
-            className="w-fit whitespace-nowrap text-[#DC3173] border-[#DC3173]"
+            className="w-fit whitespace-nowrap text-primary border-primary"
           >
             <SelectValue placeholder="Select number of results" />
           </SelectTrigger>

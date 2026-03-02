@@ -18,8 +18,9 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { createApplicationValidation, TApplicationFormValues } from "@/validations/application.validation";
+import { applyForJob } from "@/services/application.service";
 
-export default function ApplyJobForm({ jobId }: { jobId: number }) {
+export default function ApplyJobForm({ jobId }: { jobId: string }) {
     const form = useForm<TApplicationFormValues>({
         resolver: zodResolver(createApplicationValidation),
         defaultValues: {
@@ -34,19 +35,13 @@ export default function ApplyJobForm({ jobId }: { jobId: number }) {
     const onSubmit = async (values: TApplicationFormValues) => {
         const toastId = toast.loading("Submitting application...");
         try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/applications`, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(values),
-            });
+            const result = await applyForJob(values);
 
-            const result = await response.json();
-
-            if (response.ok && result.success) {
+            if (result?.success) {
                 toast.success("Application sent successfully!", { id: toastId });
                 form.reset();
             } else {
-                toast.error(result.message || "Failed to submit", { id: toastId });
+                toast.error(result?.message || "Failed to submit", { id: toastId });
             }
         } catch (error: any) {
             toast.error("Something went wrong", { id: toastId });

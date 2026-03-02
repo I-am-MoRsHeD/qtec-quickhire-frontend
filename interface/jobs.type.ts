@@ -22,6 +22,7 @@ export enum TCompany {
 }
 
 export interface IJob {
+    _id: string;
     id: number;
     title: string;
     company: TCompany;

@@ -18,7 +18,7 @@ interface JobDetailsProps {
 }
 
 const JobDetails = ({ jobDetails }: JobDetailsProps) => {
-    console.log(jobDetails);
+
     return (
         <div className="min-h-screen bg-background/70">
             <div className="">
@@ -91,7 +91,7 @@ const JobDetails = ({ jobDetails }: JobDetailsProps) => {
 
                         {/* Application Form Section */}
                         <div id="apply-form">
-                            <ApplyJobForm jobId={jobDetails.id as number} />
+                            <ApplyJobForm jobId={jobDetails._id as string} />
                         </div>
                     </div>
 
