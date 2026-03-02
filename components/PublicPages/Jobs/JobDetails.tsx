@@ -20,7 +20,7 @@ interface JobDetailsProps {
 const JobDetails = ({ jobDetails }: JobDetailsProps) => {
 
     return (
-        <div className="min-h-screen bg-background/70 py-28">
+        <div className="min-h-screen bg-background/70 py-16 lg:py-12">
             {/* Hero Section */}
             <div className="bg-background rounded-3xl p-8 shadow-sm border border-border relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-48 h-48 bg-primary/5 rounded-full -mr-24 -mt-24 blur-3xl" />
