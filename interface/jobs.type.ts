@@ -29,4 +29,5 @@ export interface IJob {
     category: TCategory;
     type: string;
     description: string;
+    createdAt: Date;
 }

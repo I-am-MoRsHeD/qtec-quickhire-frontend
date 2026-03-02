@@ -1,4 +1,4 @@
-import JobDetails from "@/components/PublicPages/Jobs/JobDetailsPage";
+import JobDetails from "@/components/PublicPages/Jobs/JobDetails";
 import { getJobDetails } from "@/services/job.service";
 
 
@@ -7,8 +7,8 @@ const JobDetailsPage = async ({ params }: { params: { id: string } }) => {
     const jobDetails = await getJobDetails(id);
 
     return (
-        <div>
-            <JobDetails />
+        <div className="max-w-310 mx-auto px-4 py-8 lg:py-28">
+            <JobDetails jobDetails={jobDetails?.data} />
         </div>
     );
 };

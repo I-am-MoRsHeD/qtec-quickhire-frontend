@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { MapPin, ArrowRight } from "lucide-react";
-import { Button } from '../ui/button';
 import { DeleteJobDialog } from '../Dashboard/DeleteJobDialog';
 
 interface JobCardProps {
