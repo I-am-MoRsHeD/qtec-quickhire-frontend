@@ -47,7 +47,7 @@ const AddNewJobForm = () => {
         const toastId = toast.loading("Creating job...");
         try {
             const result = await createJob(values as IJob);
-            console.log(result);
+
             if (result.success) {
                 toast.success("Job posted successfully!", { id: toastId });
                 router.push("/admin/jobs");
